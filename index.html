@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полотна – Прайс-лист и цены для диллеров</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <a href="/" class="logo-image">
+                <img src="assets/logo.png" alt="PLAFOND"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"
+                    style="height:56px;vertical-align:middle;">
+                <span class="logo-fallback"
+                    style="display:none; font-size:2rem; font-weight:bold; color:#2a5b98;">PLAFOND</span>
+            </a>
+        </div>
+        <div class="header-contacts">
+            <div><i class="fa fa-home"></i> г. Омск, ул. Герцена 58</div>
+            <div><i class="fa fa-mobile"></i> <a href="tel:+79043206570">8-904-320-6570</a></div>
+            <div><i class="fa fa-envelope"></i> <a href="mailto:plafond@list.ru">plafond@list.ru</a></div>
+        </div>
+    </header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/favicon.ico" />
+    <h1>Прайс-лист для дилеров</h1>
+    <div id="category-selector-container" style="margin-bottom:18px;"></div>
+    <div class="table-container">
+        <table id="prices-table">
+            <thead>
+                <tr>
+                    <th>Наименование</th>
+                    <th>Тип продукции</th>
+                    <th>Изображение</th>
+                    <th>Цена, руб</th>
+                </tr>
+            </thead>
+            <tbody id="prices-table-body">
+                <!-- Таблица будет сгенерирована JS -->
+            </tbody>
+        </table>
+    </div>
+    <script src="prices.js"></script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-col about">
+
+                    <h4>О компании</h4>
+                    <p>Работаем с 2009 года.<br>
+                        Имеем свой цех по производству полотен по адресу: 21 Амурская 25к1 в Амуре-2<br>
+                        Прошли все этапы формирования технологий монтажа сложных конструкций для потолков. И можем
+                        заявить, что способны реализовать любой проект.<br>
+                        За время работы обучили около 100 монтажников в г. Омске.<br>
+                        Работаем с крупнейшими застройщиками, например Стройбетон.<br>
+                        Всегда идем на встречу своим заказчикам.<br>
+                        Наша задача — чтобы клиент остался доволен и порекомендовал нас.</p>
+                </div>
+                <div class="footer-col requisites">
+                    <h4>Реквизиты</h4>
+                    <p>ООО «А1»<br>Юр. адрес: 644010, г. Омск, ул. 8 Марта, д. 8, кабинет 32<br>Фактический
+                        адрес:<br>Офис ул. 8 Марта, д. 8, кабинет 32<br>Цех ул. 21 Амурская, д. 25/1<br>ИНН 5503248293,
+                        КПП 550301001, ОГРН 1145543008346<br>р/с 40702810745000093615, к/с
+                        30101810900000000673<br>Омское отделение ОАО «Сбербанк России», БИК 045209673</p>
+                </div>
+                <div class="footer-col contacts">
+                    <h4>Свяжитесь с нами</h4>
+                    <ul class="contact">
+                        <li><i class="fa fa-map-marker"></i> <strong>Адрес:</strong> Россия, Омск, Герцена 58</li>
+                        <li><i class="fa fa-mobile"></i> <strong>Мобильный:</strong> 49-88-15</li>
+                        <li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a
+                                href="mailto:plafond@list.ru">plafond@list.ru</a></li>
+                        <li><i class="fa fa-phone"></i> <strong>Телефон:</strong> +7(904)320-65-70; +7(965)975-00-45
+                        </li>
+                    </ul>
+                    <h4>Доставка</h4>
+                    <p>Доставка по городу — 200 руб.<br>Бесплатная доставка от 2000 руб.<br>Доставка по Омску и Омской
+                        области.</p>
+                </div>
+
+            </div>
+            <div class="footer-copyright">
+                <div class="footer-copyright-left">
+                    <img src="http://potolokomsk.ru/themes/img/logo-footer.png" alt="Plafond"
+                        style="height:40px;vertical-align:middle;"> Компания Plafond © 2009-2025.
+                </div>
+                <div class="footer-copyright-right">
+                    <nav class="footer-menu">
+                        <ul>
+                            <li><a href="http://potolokomsk.ru/about" rel="nofollow">О нас</a></li>
+                            <li><a href="http://potolokomsk.ru/sitemap" rel="nofollow">Карта сайта</a></li>
+                            <li><a href="http://potolokomsk.ru/contacts" rel="nofollow">Контакты</a></li>
+                            <li><a href="http://potolokomsk.ru/calendar_work" rel="nofollow">Монтажникам</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function renderFullTable() {
+            const tbody = document.getElementById('prices-table-body');
+            tbody.innerHTML = '';
+            if (!window.priceTableData || !Array.isArray(priceTableData)) return;
+            priceTableData.forEach(catObj => {
+                // Заголовок категории
+                tbody.innerHTML += `<tr id="cat-${catObj.category.replace(/\s+/g, '_')}"><td colspan="4" class="category-header">${catObj.category}</td></tr>`;
+                // Товары категории
+                catObj.items.forEach(row => {
+                    tbody.innerHTML += `<tr>
+                        <td>${row.name}</td>
+                        <td>${row.type ?? ''}</td>
+                        <td><img src="${row.img ?? ''}" alt="${row.name}" style="width:64px;height:40px;object-fit:cover;border-radius:6px;"></td>
+                        <td class="center">${row.price ?? ''}</td>
+                    </tr>`;
+                });
+            });
+        }
+
+        // Генерация выпадающего списка для скролла
+        function renderCategorySelector() {
+            if (!window.priceTableData || !Array.isArray(priceTableData)) return;
+            const categories = priceTableData.map(obj => obj.category);
+            const container = document.getElementById('category-selector-container');
+            let html = '<select id="category-selector"><option value="">Выбрать категорию…</option>';
+            categories.forEach(cat => {
+                html += `<option value="${cat}">${cat}</option>`;
+            });
+            html += '</select>';
+            container.innerHTML = html;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            renderCategorySelector();
+            renderFullTable();
+            const selector = document.getElementById('category-selector');
+            selector.addEventListener('change', function () {
+                if (this.value) {
+                    const el = document.getElementById('cat-' + this.value.replace(/\s+/g, '_'));
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+    </script>
+</body>
+
+</html>
