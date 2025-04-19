@@ -1,3 +1,39 @@
+.seo-text {
+  background: linear-gradient(90deg, #f7fafd 60%, #e8eef8 100%);
+  border-radius: 18px;
+  box-shadow: 0 2px 24px #b5c6e033, 0 0 0 #fff0;
+  padding: 28px 28px 22px 28px;
+  margin: 18px auto 28px auto;
+  max-width: 900px;
+  color: #233045;
+  font-size: 1.13rem;
+  line-height: 1.75;
+  animation: fadein-seo 1.2s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+.seo-text h2 {
+  font-size: 1.38rem;
+  color: #2a5b98;
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-shadow: 0 2px 8px #b5c6e066;
+}
+.seo-text p {
+  margin-bottom: 13px;
+  margin-top: 0;
+  text-align: justify;
+}
+@media (max-width: 700px) {
+  .seo-text {
+    padding: 18px 8vw 14px 8vw;
+    font-size: 1.01rem;
+  }
+  .seo-text h2 {
+    font-size: 1.08rem;
+  }
+}
+
 /* FOOTER STYLES */
 .footer {
   background: linear-gradient(120deg, #222d3b 0%, #2c3e50 70%, #193048 100%);
